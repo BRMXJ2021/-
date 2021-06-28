@@ -5,29 +5,6 @@ $(function () {
   $('#goto-login').on('click', () => {
     $('#register').css('display', 'none');
   });
-  var form = layui.form; // 引用layui.js后, 有layui对象(类似于$), 然后拿到内部的form对象(用来管理所有用layui创建的表单-以及使用了lay-veify属性的标签)
-
-  form.verify({
-    // 指定规则名和对应的验证规则
-    usern: [
-      // 用户名
-      /^[a-z0-9]{6,10}$/,
-      '账号名是6到10位由数字, 小写字母组成',
-    ],
-    pwd: [
-      // 密码
-      /^[\S]{6,10}$/,
-      '密码是6到10位, 不能有空格',
-    ],
-    // 注册页-确认密码
-    repwd: function (value) {
-      // 为什么用函数, 因为不光要获取这个规则对应的标签的值, 还需要用jQ获取另外一个标签的值
-      //   if ($('.pwd').val() !== value) {
-      //     ('两次密码不相同');
-      //   }
-      return $('.pwd').val() !== value && '两次密码不相同';
-    },
-  });
 
   // 注册事件
   $('#register .layui-form').on('submit', (e) => {
